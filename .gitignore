@@ -1,0 +1,11 @@
+.git
+.svn
+.vs
+App1
+DTAR_08E86330_4835_4B5C_9E5A_61F37AE1A077_DTAR
+*.[oa]
+AppPackages
+BundleArtifacts
+Service References
+obj
+bin

@@ -1,0 +1,124 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GPSLogger"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:UI="using:Microsoft.Advertising.WinRT.UI"    
+   
+    x:Class="GPSLogger.MainPage"
+    mc:Ignorable="d">
+
+  <Grid Background="#FF404040">
+    <Maps:MapControl x:Name="MyMap" Margin="250,125,10,100" MapServiceToken="mVSjzpEDoO6n1IuK7sVn~xUYaOSvA3xP8JIjw6qRBQw~AtlToA6SP6kPmePzAA3rnzYIwo6VkP9phwB22hSYYg2RhiX6P8GKr9kn276oRP8t" BorderThickness="1" BorderBrush="#FFE8D6D6" />
+    <Button x:Name="buttonStart" Content="" HorizontalAlignment="Left" Margin="943,31,0,0" VerticalAlignment="Top" Click="buttonStart_Click" Foreground="White" Height="0" RenderTransformOrigin="0.5,0.5" Width="0">
+      <Button.RenderTransform>
+        <CompositeTransform ScaleY="-1" ScaleX="-1"/>
+      </Button.RenderTransform>
+    </Button>
+    <Button x:Name="ButtonStartLogging" Content="Start" HorizontalAlignment="Left" Margin="318,20,0,0" VerticalAlignment="Top" Click="Button_StartLogging" RenderTransformOrigin="1.714,0.526" Height="68" Width="93" BorderBrush="#FF3EA42E" Foreground="#FF3EA42E"/>
+    <TextBlock x:Name="TextBlockLatLabel" HorizontalAlignment="Left" Margin="31,484,0,0" TextWrapping="Wrap" Text="Latitude:" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="TextBlockLongLabel" HorizontalAlignment="Left" Margin="13,513,0,0" TextWrapping="Wrap" Text="Longitude:" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="TextBlockLatitude" HorizontalAlignment="Left" Margin="121,484,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="No Rpt" Foreground="White"/>
+    <TextBlock x:Name="TextBlockLongitude" HorizontalAlignment="Left" Margin="121,512,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="No Rpt" Foreground="White"/>
+
+    <TextBlock Text="Speed:" HorizontalAlignment="Left" Margin="10,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Foreground="White"/>
+    <TextBlock x:Name="TextBlockSpeed" HorizontalAlignment="Left" Margin="131,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="0" Foreground="White"/>
+    <TextBlock Text="Heading:" HorizontalAlignment="Left" Margin="32,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="TextBlockHeading" HorizontalAlignment="Left" Margin="131,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="N" Foreground="White"/>
+    <TextBlock HorizontalAlignment="Left" Margin="15,135,0,0" TextWrapping="Wrap" Text="Max Speed:" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="TextBlockMaxSpeed" HorizontalAlignment="Left" Margin="131,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="0" Foreground="White"/>
+    <TextBlock x:Name="TextBlockDistance" HorizontalAlignment="Left" Margin="131,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="0" Foreground="White"/>
+    <TextBlock HorizontalAlignment="Left" Margin="35,164,0,0" TextWrapping="Wrap" Text="Distance:" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="TextBlockTripTime" HorizontalAlignment="Left" Margin="131,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="0" Foreground="White"/>
+    <TextBlock HorizontalAlignment="Left" Margin="29,193,0,0" TextWrapping="Wrap" Text="Trip time:" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="textBlockMessage" HorizontalAlignment="Left" Margin="942,18,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="111" Width="264" Foreground="White"/>
+    <TextBlock x:Name="TextBlockTime" HorizontalAlignment="Left" Margin="15,604,0,0" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="20" Text="Time:" Height="32" Foreground="White"/>
+    <TextBlock HorizontalAlignment="Left" Margin="3,453,0,0" TextWrapping="Wrap" Text="Position Count:" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="-4.455,35.703" Height="32" Foreground="White"/>
+    <TextBlock x:Name="TextBlockPositionCount" HorizontalAlignment="Left" Margin="155,453,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="0" Height="32" Foreground="{ThemeResource AppBarBackgroundThemeBrush}"/>
+    <TextBlock x:Name="TextBlockLastFixTime" HorizontalAlignment="Left" Margin="15,424,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Last Fix:" Height="32" Foreground="White"/>
+    <TextBlock x:Name="TextBlockFileSaved" HorizontalAlignment="Left" Margin="266,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Ready." Foreground="White"/>
+    <Button x:Name="ButtonSave" Content="Save" HorizontalAlignment="Left" Margin="424,20,0,0" VerticalAlignment="Top" Click="Button_Save" RenderTransformOrigin="1.714,0.526" Height="68" Width="85" BorderBrush="White" Foreground="White" IsEnabled="False" Background="#33000000" Opacity="0.9"/>
+    <Button x:Name="ButtonClear" Content="Clear" HorizontalAlignment="Left" Margin="519,20,0,0" VerticalAlignment="Top" Click="Button_Clear" RenderTransformOrigin="1.714,0.526" Height="68" Width="95" BorderBrush="White" Foreground="White" Background="#33000000" Opacity="0.9" IsEnabled="False" />
+    <Button x:Name="ButtonSettings1" Content="Settings" HorizontalAlignment="Left" Margin="630,20,0,0" VerticalAlignment="Top" Click="Button_Settings" RenderTransformOrigin="1.714,0.526" Height="68" Width="95" Foreground="White" BorderBrush="#FFEEE2E2"/>
+    <Button x:Name="ButtonViewLogs" Content="View Logs" HorizontalAlignment="Left" Margin="739,20,0,0" VerticalAlignment="Top" Click="ButtonViewLogsClick" RenderTransformOrigin="1.714,0.526" Height="68" Width="103" Foreground="White" BorderBrush="#FFEEE2E2"/>
+    <TextBlock x:Name="textBlockZoomLevel" HorizontalAlignment="Left" Margin="35,560,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="{ThemeResource AppBarBorderThemeBrush}"/>
+    <TextBox x:Name="TextBoxLogContainer" HorizontalAlignment="Left" Margin="250,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="486" Width="747" Background="Black" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Auto" InputScope="Url" FontSize="36" Text="Log Files" IsReadOnly="True" IsHitTestVisible="False"/>
+
+    <TextBox x:Name="TextBoxSettingsContainer" HorizontalAlignment="Left" Margin="250,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="486" Width="747" Background="Black" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Auto" InputScope="Url" FontSize="36" Text="Settings" IsReadOnly="True" IsHitTestVisible="False"/>
+    <ItemsControl x:Name="ItemsControlSettings" HorizontalAlignment="Left" Height="427.3" Margin="287,184,0,0" Width="222" BorderBrush="#FFDDC6C6" BorderThickness="2" Background="#FF835252" VerticalAlignment="Top" UseLayoutRounding="False" IsDoubleTapEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False">
+      <ItemsControl.ItemContainerTransitions>
+        <TransitionCollection>
+          <AddDeleteThemeTransition/>
+        </TransitionCollection>
+      </ItemsControl.ItemContainerTransitions>
+      <RadioButton x:Name="RadioButtonGPX1" Content="Save as GPX" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True" GroupName="File" Click="RadioButtonGPX1_Click" Foreground="White"/>
+      <RadioButton x:Name="RadioButtonCSV1" Content="Save as CSV" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="False" GroupName="File" Click="RadioButtonCSV1_Click" Foreground="White"/>
+      <TextBlock TextWrapping="Wrap" Text="GPS Update Interval (Seconds)" FontSize="16" Height="50" VerticalAlignment="Center" Margin="10,0" Foreground="White"/>
+      <TextBox x:Name="TextBoxSetInterval" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="19" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Foreground="White" BorderBrush="#FF888888" SelectionHighlightColor="#FFACBFCE" Margin="24,0,134,0"/>
+      <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="" Width="274" FontSize="16" Height="18" VerticalAlignment="Center" Margin="3,0,-4,0"/>
+      <CheckBox x:Name="CheckBoxShowLatLong" Content="Show Lat/Long" HorizontalAlignment="Left" Width="165" Margin="0,0,0,0" Click="CheckBoxShowLatLong_Click" Foreground="White" IsChecked="True"/>
+      <CheckBox x:Name="CheckBoxColourScheme" Content="Dark Colour Scheme" HorizontalAlignment="Left" Width="165" Margin="0,0,0,0" Click="CheckBoxColourScheme_Click" Foreground="White" IsChecked="True"/>
+      <CheckBox x:Name="CheckBoxRotate" Content="Rotate map with heading" HorizontalAlignment="Left" Width="223" Margin="0,0,0,0" Click="CheckBoxRotate_Click" Foreground="White" IsChecked="True"/>
+      <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="" Width="274" FontSize="16" Height="12" VerticalAlignment="Center" Margin="3,0,-4,0"/>
+      <Button x:Name="ButtonDownloadMaps" Content="Download Maps" HorizontalAlignment="Left" Margin="6,0,0,0" VerticalAlignment="Top" Click="Button_DownloadMaps_Click" RenderTransformOrigin="1.714,0.526" Width="160" Height="38" Foreground="White" BorderBrush="White"/>
+      <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Width="347" Margin="10,0,0,0" Height="20" FontSize="16"/>
+      <Button x:Name="ButtonCloseSettings" Content="Close" HorizontalAlignment="Left" Width="160" Height="38" VerticalAlignment="Top" Click="Button_CloseSettingsClick" Foreground="White" BorderBrush="White" Margin="6,0,0,0"/>
+      <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Width="146" Margin="10,0,0,0" Height="10" FontSize="16"/>
+      <TextBlock x:Name="TextBlockAppVersion" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="16" Text="Version:" Width="211" Margin="13,0,0,12" DoubleTapped="TextBlockAppVersion_DoubleTapped"  Foreground="White"/>
+    </ItemsControl>
+
+    <TextBox x:Name="TextBoxGPSList" Margin="1060,298,58,0" VerticalAlignment="Top" Height="322" InputScope="Url" Background="#FF080000" SelectionHighlightColor="White" Foreground="White" FontSize="18" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Hidden" TextWrapping="Wrap" Header="" IsReadOnly="True" IsHitTestVisible="False"/>
+    <CheckBox x:Name="CheckBoxShowMap1" Content="" HorizontalAlignment="Left" Margin="16,578,0,0" VerticalAlignment="Top" IsChecked="True" Click="CheckBoxShowMap1_Click" Height="35" Width="30" FontSize="16" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Left" Foreground="Transparent" Background="Transparent" AllowDrop="True" BorderBrush="#00000000"/>
+    <TextBlock x:Name="TextBlockShowMap" HorizontalAlignment="Left" Margin="51,579,0,0" TextWrapping="Wrap" Text="Show Map" VerticalAlignment="Top" FontSize="24" Tapped="TextBlockShowMap_Tapped" Foreground="White"/>
+    <TextBlock HorizontalAlignment="Left" Margin="23,269,0,0" TextWrapping="Wrap" Text="Elevation:" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="TextBlockAltitude" HorizontalAlignment="Left" Margin="121,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="No Rpt" Foreground="White"/>
+    <TextBlock HorizontalAlignment="Left" Margin="25,298,0,0" TextWrapping="Wrap" Text="Max Elev:" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="TextBlockMaxElevation" HorizontalAlignment="Left" Margin="121,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Unk" Foreground="White"/>
+    <TextBlock HorizontalAlignment="Left" Margin="28,327,0,0" TextWrapping="Wrap" Text="Min Elev:" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="TextBlockMinElevation" HorizontalAlignment="Left" Margin="121,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Unk" Foreground="White"/>
+    <Button x:Name="ButtonClearDistance" Content="Reset Trip" HorizontalAlignment="Left" Margin="63,225,0,0" VerticalAlignment="Top" Click="Button_ClearDistance" RenderTransformOrigin="1.714,0.526" Width="106" Height="31" Foreground="White" BorderBrush="White" IsEnabled="False" Background="#33000000"/>
+    <TextBlock x:Name="TextBlockGradeLabel" HorizontalAlignment="Left" Margin="46,363,0,0" TextWrapping="Wrap" Text="Grade:" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    <TextBlock x:Name="TextBlockGrade" HorizontalAlignment="Left" Margin="123,363,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
+    
+    <ItemsControl x:Name="ItemsControlSettings2" HorizontalAlignment="Left" Height="406.3" Margin="515,183.7,0,0" Width="353.674" BorderBrush="#FFDDC6C6" BorderThickness="2" Background="#FF835252" VerticalAlignment="Top" UseLayoutRounding="False">
+      <ItemsControl.ItemContainerTransitions>
+        <TransitionCollection>
+          <AddDeleteThemeTransition/>
+        </TransitionCollection>
+      </ItemsControl.ItemContainerTransitions>
+      <RadioButton x:Name="RadioButtonMetric1" Content="Metric" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Units" IsChecked="True" Click="RadioButtonMetric1_Click" Foreground="White"/>
+      <RadioButton x:Name="RadioButtonImperial1" Content="Imperial" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Units" Click="RadioButtonImperial1_Click" Foreground="White"/>
+      <CheckBox x:Name="CheckBoxRunUnderLockScreen" Content="Run in background" HorizontalAlignment="Left" Width="194" Foreground="White" BorderBrush="White"/>
+      <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Width="146" Margin="10,0,0,0" Height="49" FontSize="16"/>
+      <TextBlock x:Name="TextBlockMessageGoPro" HorizontalAlignment="Left" Margin="13,0,0,0" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="16" Text="GoPro Message" Foreground="White" Height="122" Width="303"/>
+      <Button x:Name="buttonRemoveAds" Content="Download GPS Logger Pro" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Bottom" Foreground="White" Width="200" Height="38" BorderBrush="White" Click="buttonRemoveAds_Click"/>
+      <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Width="146" Margin="10,0,0,0" Height="18" FontSize="16"/>
+      <Button x:Name="buttonRateMyApp" Content="*****  Rate GPS Logger" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Bottom" Foreground="White" Width="200" Height="38" BorderBrush="White" Click="buttonRateMyApp_Click"/>
+    </ItemsControl>
+
+    <TextBox x:Name="TextBoxPositionData" Margin="266,129,0,0" TextWrapping="Wrap" Text="Position Data" VerticalAlignment="Top" Width="700" Height="491" InputScope="Url" Background="#FF080000" SelectionHighlightColor="White" Foreground="White" FontSize="18" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" HorizontalAlignment="Left" IsReadOnly="True" IsHitTestVisible="False"/>
+    <ItemsControl x:Name="ItemsControlLogFiles" HorizontalAlignment="Left" Height="455" Margin="874,144,0,0" Width="222" BorderBrush="#FFDDC6C6" BorderThickness="2" Background="#FF835252" VerticalAlignment="Top" UseLayoutRounding="False" IsDoubleTapEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False">
+      <ItemsControl.ItemContainerTransitions>
+        <TransitionCollection>
+          <AddDeleteThemeTransition/>
+        </TransitionCollection>
+      </ItemsControl.ItemContainerTransitions>
+      <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="" Width="274" FontSize="16" Height="63" VerticalAlignment="Center" Margin="-22,0,-30,0"/>
+      <Button x:Name="buttonLoad" Content="Browse..." HorizontalAlignment="Left" VerticalAlignment="Top" Click="buttonLoad_Click" Foreground="White" Margin="6,0,0,0" Height="38" Width="160" BorderBrush="White"/>
+      <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Width="146" Margin="10,0,0,0" Height="14" FontSize="16"/>
+      <RadioButton x:Name="RadioButtonFullTrace" Content="Draw Full Trip Immediate" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Units" IsChecked="False" Foreground="White"/>
+      <RadioButton x:Name="RadioButtonRealTime" Content="Run trip in Real Time" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Units" IsChecked="False" Foreground="White"/>
+      <RadioButton x:Name="RadioButtonFast" Content="Run trip accelerated" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Units" IsChecked="True" Foreground="White"/>
+      <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="" Width="212" FontSize="16" Height="120" VerticalAlignment="Center" Margin="10,0,0,0"/>
+      <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Width="178" Margin="10,0,0,0" Height="44" FontSize="16"/>
+      <Button x:Name="ButtonCloseLogFilesWindow" Content="Close" HorizontalAlignment="Left" Width="160" Margin="6,0,0,0" VerticalAlignment="Top" Click="Button_CloseLogFilesClick" Foreground="White" BorderBrush="White" Height="38"/>
+    </ItemsControl>
+
+    <TextBlock x:Name="textBlockMessage1" HorizontalAlignment="Left" Margin="998,0,0,14" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" Foreground="{ThemeResource AppBarBorderThemeBrush}"/>
+    <!--<UI:AdControl x:Name="MyAdControl"/>-->
+    <UI:AdControl x:Name="MyAdControl" ApplicationId="fdd41d91-5e14-4d85-9c9a-6e5678fc3b2f" AdUnitId="247675" HorizontalAlignment="Left" Height="90" Margin="250,0,0,6" VerticalAlignment="Bottom" Width="728" Visibility="Visible" Background="#FF92A7D3" BorderBrush="#FF803B3B"/>
+
+  </Grid>
+</Page>
