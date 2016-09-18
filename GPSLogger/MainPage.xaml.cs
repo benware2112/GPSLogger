@@ -171,6 +171,7 @@ namespace GPSLogger
     private MapIcon iconSchool;
     private MapIcon iconPin;
     public List<MapIcon> ListOfMapIconPoints;
+    private Color liveStrokeColor;
     //    private List<String> DestinationList;
     //    private List<BasicGeopositionExtended> pointsList;
 
@@ -283,6 +284,7 @@ namespace GPSLogger
       loadLocalSettings();
 
       GPX = new GPXLibUC1();
+      GPX.AppType(proApp);
       ButtonStartLogging.Visibility = Visibility.Visible;
       GPX.MetresOrImperial = !(bool)RadioButtonMetric1.IsChecked;
 
@@ -340,6 +342,7 @@ namespace GPSLogger
 
       TextBlockAppVersion.Text = String.Format("Version: {0}", GetApplicationVersion(versionLimit));
       //   this.
+      GPX.SetAppVersion(GetApplicationVersion(3));
 
       showGPSItems(true);
       SetGUIItems();
@@ -2994,7 +2997,7 @@ namespace GPSLogger
 
     private void DrawPathBetweenTwoPoints(Geopoint p1, Geopoint p2)
     {
-      var strokeColor = Colors.Blue;
+      Color strokeColor = liveStrokeColor;
       int count = 0;
       var pathPoints = PointList.GetSegment(p1, p2);// FromString(s1, s2);
 
@@ -3011,7 +3014,7 @@ namespace GPSLogger
 
     private void DrawWholePathFromFile()
     {
-      var strokeColor = Colors.Blue;
+      Color strokeColor = liveStrokeColor;
       int count = 0;
       int strokeWidth = 2;
 
@@ -3028,7 +3031,7 @@ namespace GPSLogger
 
     private async void drawLivePath()
     {
-      var strokeColor = Colors.Blue;
+      Color strokeColor = liveStrokeColor;
       int count = 0;
       var pathPoints = PointList.GetSegment(GPX);
       if (GPX.positionsCount > 1)
@@ -4060,6 +4063,11 @@ namespace GPSLogger
     }
     private void comboBoxMapTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+      MapTypeChanged();
+    }
+
+    private void MapTypeChanged()
+    {
       int index = comboBoxMapTypes.SelectedIndex;
       if (index >= 0)
       {
@@ -4069,21 +4077,27 @@ namespace GPSLogger
           case 0:
             MyMap.Style = MapStyle.Road;
             CheckBoxColourScheme.IsEnabled = true;
+            liveStrokeColor = Colors.Blue;
             break;
           case 1:
             MyMap.Style = MapStyle.Terrain;
+            liveStrokeColor = Colors.Blue;
             break;
           case 2:
             MyMap.Style = MapStyle.Aerial;
+            liveStrokeColor = Colors.WhiteSmoke;
             break;
           case 3:
             MyMap.Style = MapStyle.AerialWithRoads;
+            liveStrokeColor = Colors.WhiteSmoke;
             break;
           case 4:
             MyMap.Style = MapStyle.Aerial3D;
+            liveStrokeColor = Colors.WhiteSmoke;
             break;
           case 5:
             MyMap.Style = MapStyle.Aerial3DWithRoads;
+            liveStrokeColor = Colors.WhiteSmoke;
             break;
         }
       }
