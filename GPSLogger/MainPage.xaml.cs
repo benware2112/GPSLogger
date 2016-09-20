@@ -4372,7 +4372,7 @@ namespace GPSLogger
           {
             await removeAllPlacemarks();
           }));
-          md.Commands.Add(new UICommand("No"));
+          md.Commands.Add(new UICommand("No")); 
           await md.ShowAsync();
         }
         else
