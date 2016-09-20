@@ -1735,7 +1735,7 @@ namespace GPSLogger
         //SettingsContainer2.Margin = new Thickness(SettingsContainer1.Width + 100, 100, 0, 0);
         //SettingsContainerAbout.Margin = new Thickness(SettingsContainer1.Width + SettingsContainer2.Width + 200, 100, 0, 0);
         //        SettingsContainer2.Margin = new Thickness(350, 120, 0, 0);
-        LogsContainer.Margin = new Thickness(30, 115, 0, 0);
+        LogsContainer.Margin = new Thickness(25, 55, 0, 0);
         //       LogsContainer.Height = LogsTitle.Height - heightAdjust;
         PlacemarksContainer.Margin = new Thickness(12, 100, 0, 0);
         PlacemarksTitle.Width = 230;
@@ -4365,14 +4365,7 @@ namespace GPSLogger
 
         if (prompt)
         {
-          if (proApp)
-          {
-            message = "Are you sure you wish to delete ALL current placemarks?\r\n\r\nClick 'Save Placemarks' to remove them permanently";
-          }
-          else
-          {
-            message = "Are you sure you wish to delete ALL current placemarks?\r\n\r\nThis is permanent!  You will need to recreate them if desired.";
-          }
+          message = "Are you sure you want to remove ALL current placemarks?\r\n\r\nYou will need to recreate them or reload them from file.\r\nGo to the Settings page for Import/Export placemarks.";
 
           md = new MessageDialog(message);
           md.Commands.Add(new UICommand("Yes", async (UICommandInvokedHandler) =>

@@ -1,1 +1,1 @@
-D:\Source\2015\GPSLogger\GPSLogger\AppPackages\GPSLogger_2.0.205.0\GPSLogger_2.0.205.0_x86_x64_arm.appxbundle
+D:\Source\2015\GPSLogger\GPSLogger\AppPackages\GPSLogger_2.0.206.0\GPSLogger_2.0.206.0_x86_x64_arm.appxbundle
